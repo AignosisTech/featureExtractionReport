@@ -372,12 +372,12 @@ const  ReportComLast = () => {
                     </table>
                 </div>
             </div>
-            <div className="w-full h-[30vw] bg-[#43284c] flex-col flex justify-center items-center">
+            <div className="w-full h-[30vw] bg-[#43284c] flex-col flex justify-center items-center text-justify">
                 <h1 className='text-white font-Cormorant text-7xl font-semibold'>Thank You !</h1>
                 <div className="flex w-[60vw] mt-[3vw] gap-[4vw] justify-center items-center">
-                    <div className="w-[15vw] h-[15vw] bg-slate-300"></div>
-                    <div className='w-[50%] text-base text-white font-montserrat'>
-                        <h1>Thank you for conducting the developmental screening for <br /> <span className='font-bold text-3xl'>{name}.</span> </h1>
+                    {/* <div className="w-[15vw] h-[15vw] bg-slate-300"></div> */}
+                    <div className='w-[50%] text-base text-white font-montserrat '>
+                        <h1>Thank you for conducting the developmental screening for <br /> <center> <span className='font-bold text-3xl'>{name}.</span> </center></h1>
                         <h1 className='mt-4'>Your thorough assessment and careful observation have provided valuable insights into his abilities across key areas. We greatly appreciate your time, effort, and expertise in ensuring a comprehensive evaluation. </h1>
                         <h1 className='mt-4'>Your dedication to this process is truly commendable, and we are grateful for your contribution to Divyansh's growth and development.</h1>
                         </div>
