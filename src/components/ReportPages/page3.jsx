@@ -1,19 +1,34 @@
 import React, { useContext, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AppContext } from "../../AppContext";
-import { useParams } from 'react-router-dom';
-
 
 const ReportPage3 = () => {
-  console.log(useContext(AppContext));
   const { testData, fetchTestData } = useContext(AppContext);
-  const { patient_uid, transaction_id, name, dob } = useParams(); // Extract URL parameters
+  const location = useLocation();
+  
+  // Function to parse query parameters
+  const getQueryParams = (search) => {
+    const params = new URLSearchParams(search);
+    return {
+      patient_uid: params.get("PATIENT_UID"),
+      transaction_id: params.get("TRANSACTION_ID"),
+      dob: params.get("patientDOB"),
+    };
+  };
 
+  const { patient_uid, transaction_id, dob } = getQueryParams(location.search);
+  
   useEffect(() => {
+    console.log("Extracted Parameters:");
+    console.log("PATIENT ID =", patient_uid);
+    console.log("TRANSACTION ID =", transaction_id);
+    console.log("DOB =", dob);
 
-      console.log("YEs");
-      // fetchTestData('patient_uid', 'transaction_id');
-      fetchTestData('4936972e-4a9c-4f3a-b477-7d7a0118b631', '8538f3b4-2e3d-425e-a23a-46b46bb30562');
-  }, []);
+    if (patient_uid && transaction_id) {
+      fetchTestData(patient_uid, transaction_id);
+    }
+  }, [patient_uid, transaction_id, dob]); // Ensure it runs when params change
+
   console.log(testData);
   console.log(testData["Focal Point IOU"]);
   return (
