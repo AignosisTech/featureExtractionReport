@@ -13,16 +13,18 @@ const ReportPage3 = () => {
       patient_uid: params.get("PATIENT_UID"),
       transaction_id: params.get("TRANSACTION_ID"),
       dob: params.get("patientDOB"),
+      name: params.get("name"),
     };
   };
 
-  const { patient_uid, transaction_id, dob } = getQueryParams(location.search);
+  const { patient_uid, transaction_id, dob, name } = getQueryParams(location.search);
   
   useEffect(() => {
     console.log("Extracted Parameters:");
     console.log("PATIENT ID =", patient_uid);
     console.log("TRANSACTION ID =", transaction_id);
     console.log("DOB =", dob);
+    console.log("name =", name);
 
     if (patient_uid && transaction_id) {
       fetchTestData(patient_uid, transaction_id);

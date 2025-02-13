@@ -2,10 +2,22 @@ import React, { useContext, useEffect } from 'react';
 import Page1 from "./ReportPages/page1"
 import Page2 from "./ReportPages/page2"
 import Page3 from "./ReportPages/page3"
+import { useLocation } from 'react-router-dom';
+
 // import { AppContext } from "../AppContext";
 
 const  ReportComLast = () => {
-    
+     const location = useLocation();
+        const getQueryParams = (search) => {
+          const params = new URLSearchParams(search);
+          return {
+            dob: params.get("patientDOB"),
+            name: params.get("name"),
+          };
+        };
+      
+        const {dob, name } = getQueryParams(location.search);
+      
     // console.log(useContext(AppContext));
     // const { testData, fetchTestData } = useContext(AppContext);
     
@@ -19,7 +31,7 @@ const  ReportComLast = () => {
         <div className=''>
             
             <Page1 />
-            <Page2 />
+            {/* <Page2 /> */}
             <Page3 />
             <div className='w-full h-auto font-manrope flex p-[4vw] justify-center items-center bg-new-gradient'>
                 <div className='w-[85%] h-[90%] rounded-3xl bg-[#FFF9F8] p-6 shadow-lg'>
@@ -365,7 +377,7 @@ const  ReportComLast = () => {
                 <div className="flex w-[60vw] mt-[3vw] gap-[4vw] justify-center items-center">
                     <div className="w-[15vw] h-[15vw] bg-slate-300"></div>
                     <div className='w-[50%] text-base text-white font-montserrat'>
-                        <h1>Thank you for conducting the developmental screening for <br /> <span className='font-bold'>Divyansh Mangal.</span> </h1>
+                        <h1>Thank you for conducting the developmental screening for <br /> <span className='font-bold text-3xl'>{name}.</span> </h1>
                         <h1 className='mt-4'>Your thorough assessment and careful observation have provided valuable insights into his abilities across key areas. We greatly appreciate your time, effort, and expertise in ensuring a comprehensive evaluation. </h1>
                         <h1 className='mt-4'>Your dedication to this process is truly commendable, and we are grateful for your contribution to Divyansh's growth and development.</h1>
                         </div>

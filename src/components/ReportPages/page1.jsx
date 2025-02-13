@@ -1,7 +1,21 @@
 import React from 'react';
 import backgroundImage from '../../assets/page1bg.png'; // Importing the background image
+import { useLocation } from 'react-router-dom';
 
 function ReportPage() {
+    const location = useLocation();
+    const getQueryParams = (search) => {
+      const params = new URLSearchParams(search);
+      return {
+        dob: params.get("patientDOB"),
+        name: params.get("name"),
+      };
+    };
+  
+    const {dob, name } = getQueryParams(location.search);
+    
+    
+  
   return (
     <div style={styles.container}>
       <div style={styles.logo}>Ai.gnosis</div>
@@ -12,9 +26,9 @@ function ReportPage() {
       />
       <div style={styles.overlayBox}>
         <h1 style={styles.title}>Ai.gnosis Cognitive & Developmental Report</h1>
-        <p style={styles.infoText}>Name: Divyansh Mangal</p>
-        <p style={styles.infoText}>Date of Assessment: 18-08-2024</p>
-        <p style={styles.infoText}>Age at Assessment: 3 years old</p>
+        <p style={styles.infoText}>Name: {name}</p>
+        <p style={styles.infoText}>Date of Birth: {dob}</p>
+        {/* <p style={styles.infoText}>Age at Assessment: 3 years old</p> */}
       </div>
     </div>
   );
